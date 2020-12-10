@@ -1,7 +1,7 @@
 <template>
     <section class="charts">
         <highcharts :options="PieData" ref="pieChart"></highcharts>
-        {{this.$store.state.genders.male}} {{this.$store.state.genders.female}}
+        {{getMale}} {{getFemale}}
     </section>
     
 </template>
@@ -34,10 +34,10 @@ export default {
         },
         series: [
             {
-                data: 
+              data: 
                 [
-                  ["Male", this.$store.state.genders.male],
-                  ["Female", this.$store.state.genders.female],
+                  ["Male", this.getMale],
+                  ["Female", this.getFemale],
                 ]
             }
         ]
@@ -45,12 +45,17 @@ export default {
     };
   },
   computed: {
-    
+    getMale () {
+      return this.$store.getters['getMale']
+    },
+    getFemale () {
+      return this.$store.getters['getFemale']
+    }
   },
   mounted () {
-    this.$store.commit('setGenders', {
-      amount: 25
-    })
+    // this.$store.commit('setGenders', {
+    //   amount: 25
+    // })
   },
 };
 </script>

@@ -5,15 +5,23 @@ Vue.use(Vuex);
  
 export default new Vuex.Store({
  state: {
-     genders: {
-        male: 15,
-        female: 5
-     }
+    genders: {
+        male: 0,
+        female: 0
+    }
  },
- getters: {},
+ getters: {
+     getMale: (state) => {
+         return state.genders.male
+     },
+     getFemale: (state) => {
+        return state.genders.female
+    }
+ },
  mutations: {
     setGenders(state, data) {
-        state.genders.male = data.amount
+        state.genders.male = data.amount.male
+        state.genders.female = data.amount.female
     }
  },
  actions: {}

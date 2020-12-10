@@ -3,15 +3,15 @@
     <div class="genderChartButton" @click="showModal"> 
       <span> Show Chart </span>
     </div>
-    <ModalWindow
-      v-show="isModalVisible"
-      @close="closeModal"
-    />
-    <div class="searchBar">
-      <input class="inputBox" type="text" v-model="searchedUser" placeholder="Enter user name">
-    </div>
+      <ModalWindow
+        v-show="isModalVisible"
+        @close="closeModal"
+      />
+      <div class="searchBar">
+        <input class="inputBox" type="text" v-model="searchedUser" placeholder="Enter user name">
+      </div>
     
-    <div class="accordion" id="accordion">
+      <div class="accordion" id="accordion">
       <div class="accordionItem">
         <div class="item">
           <div class="itemHeader">
@@ -166,9 +166,12 @@ export default {
       if (user.gender === "male") this.counters.counterMale++
       else this.counters.counterFemale++
     });
-    // this.$store.commit('setGenders', {
-    //   amount: 25
-    // })
+    this.$store.commit('setGenders', {
+      amount: {
+        male: this.counters.counterMale,
+        female: this.counters.counterFemale
+      } 
+    })
   },
   methods: {
     formatDate: function (responceDate) {
