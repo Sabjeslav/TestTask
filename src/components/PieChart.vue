@@ -1,7 +1,6 @@
 <template>
     <section class="charts">
         <highcharts :options="PieData" ref="pieChart"></highcharts>
-        {{getMale}} {{getFemale}}
     </section>
     
 </template>
@@ -13,9 +12,15 @@ export default {
   components: {
     highcharts: Chart
   },
-  data() {
-    return {    
-      PieData:  {
+  computed: {
+    getMale () {
+      return this.$store.getters['getMale']
+    },
+    getFemale () {
+      return this.$store.getters['getFemale']
+    },
+    PieData () {
+      return {
         chart: {
             type: "pie"
         },
@@ -41,21 +46,8 @@ export default {
                 ]
             }
         ]
-        }
-    };
-  },
-  computed: {
-    getMale () {
-      return this.$store.getters['getMale']
-    },
-    getFemale () {
-      return this.$store.getters['getFemale']
+      }
     }
-  },
-  mounted () {
-    // this.$store.commit('setGenders', {
-    //   amount: 25
-    // })
   },
 };
 </script>

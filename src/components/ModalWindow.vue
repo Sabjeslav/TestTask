@@ -5,8 +5,8 @@
       <div class="modal" role="dialog">
         <header id="modalTitle">
           <slot name="header">
-            <button type="button" @click="close" >
-              <div class="closeBtn">
+            <button type="button" class="noBorder" @click="close" >
+              <div class="closeBtn noBorder">
                 <span>Close</span>
               </div>
             </button>
@@ -75,6 +75,15 @@ import Chart from './PieChart'
     border-radius: 5px;
     background-color:  #4AAE9B;
     color: white;
+  }
+
+  .closeBtn:hover{
+    background-color:  #86dbcc;
+  }
+
+  .noBorder {
+    border: none;
+    outline: none;
   }
 
 
